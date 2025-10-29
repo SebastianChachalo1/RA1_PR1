@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVerse 3D - Tienda de Videojuegos</title>
+
+    <!-- Enlace al CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Three.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🎮 GameVerse 3D</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="sebas.html">Consolas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="presentacion">
+            <h2>Bienvenido a GameVerse 3D</h2>
+            <p>
+                GameVerse 3D es una tienda virtual donde puedes explorar consolas y videojuegos en un entorno tridimensional.
+                Descubre los detalles de tus dispositivos favoritos con modelos 3D interactivos y una experiencia moderna.
+            </p>
+        </section>
+
+        <section id="modelo3d">
+            <h3>Vista previa 3D</h3>
+            <div id="scene-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 GameVerse 3D | Proyecto Intermodular DAW - Sebas</p>
+    </footer>
+
+    <!-- Script three.js -->
+    <script>
+        // Crear escena, cámara y renderizador
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
+        document.getElementById("scene-container").appendChild(renderer.domElement);
+
+        // Luz
+        const light = new THREE.AmbientLight(0xffffff, 2);
+        scene.add(light);
+
+        // Cargar modelo 3D (puede ser el logo o un mando)
+        const loader = new THREE.GLTFLoader();
+        loader.load(
+            'models/mando.glb', // ⚠️ pon aquí tu modelo .glb (por ejemplo "mando.glb")
+            function (gltf) {
+                const model = gltf.scene;
+                model.scale.set(2, 2, 2);
+                scene.add(model);
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    model.rotation.y += 0.01;
+                    renderer.render(scene, camera);
+                }
+                animate();
+            },
+            undefined,
+            function (error) {
+                console.error('Error al cargar el modelo:', error);
+            }
+        );
+
+        camera.position.z = 5;
+
+        // Ajustar al tamaño de pantalla
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
+        });
+    </script>
+</body>
+</html>

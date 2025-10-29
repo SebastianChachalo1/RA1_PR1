@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d0d0d;
+    color: #f5f5f5;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #202020;
+    padding: 1em 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    color: #00ffcc;
+    margin: 0;
+}
+
+.hook {
+    font-style: italic;
+    color: #aaaaaa;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+nav a {
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a.active {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+main {
+    padding: 2em;
+}
+
+/* Contenedores para Milestone 1 */
+.contenedor {
+    margin: 1em auto;
+    padding: 1.5em;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.contenedor-azul {
+    background-color: rgba(0, 100, 255, 0.2);
+    border: 2px solid #0066ff;
+}
+
+.contenedor-verde {
+    background-color: rgba(0, 255, 100, 0.2);
+    border: 2px solid #00cc66;
+}
+
+.contenedor-rojo {
+    background-color: rgba(255, 100, 100, 0.2);
+    border: 2px solid #ff4444;
+}
+
+.contenedor-amarillo {
+    background-color: rgba(255, 255, 100, 0.2);
+    border: 2px solid #ffcc00;
+}
+
+#scene-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    background-color: #111;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #202020;
+    padding: 1em;
+    font-size: 0.9em;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+main {
+    padding: 2em;
+}
+
+#scene-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00ffcc;
+    border-radius: 10px;
+    background-color: #111;
+}
+
+footer {
+    background-color: #202020;
+    padding: 1em;
+    margin-top: 2em;
+    font-size: 0.9em;
+}

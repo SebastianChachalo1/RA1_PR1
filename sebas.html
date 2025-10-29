@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolas - GameVerse 3D</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🎮 GameVerse 3D</h1>
+        <p class="hook">Descubre las consolas más potentes en un entorno 3D único.</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sebas.html" class="active">Consolas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="descripcion" class="contenedor contenedor-amarillo">
+            <h2>Explora nuestras consolas</h2>
+            <p>
+                Desde la legendaria PlayStation hasta la potente Xbox, observa cada detalle 
+                con nuestros modelos 3D interactivos. ¡Gira, mira y elige tu próxima consola!
+            </p>
+        </section>
+
+        <section id="modelo3d" class="contenedor contenedor-verde">
+            <h3>Vista 3D de consola</h3>
+            <div id="scene-container"></div>
+        </section>
+    </main>
+
+    <footer class="contenedor contenedor-rojo">
+        <p>© 2025 GameVerse 3D | Página de Sebas</p>
+    </footer>
+
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
+        document.getElementById("scene-container").appendChild(renderer.domElement);
+
+        const light = new THREE.AmbientLight(0xffffff, 2);
+        scene.add(light);
+
+        // Cubo de ejemplo para Milestone 1
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0xffcc00, wireframe: true });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.y += 0.02;
+            cube.rotation.x += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
