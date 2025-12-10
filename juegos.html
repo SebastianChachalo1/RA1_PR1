@@ -11,6 +11,43 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/examples/js/controls/OrbitControls.js"></script>
+
+    <style>
+        /* Estilos para tarjetas de juegos (igual que consolas) */
+        .game-container {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 12px;
+        }
+
+        .game-container img {
+            width: 200px;
+            border-radius: 12px;
+            margin-right: 20px;
+        }
+
+        .game-info {
+            flex: 1;
+        }
+
+        .game-info button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .game-info button:hover {
+            background-color: #e55b00;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,74 +64,31 @@
 
     <main>
         <section class="contenedor contenedor-amarillo">
-            <h2>Modelo 3D del Juego</h2>
-            <p>Aquí puedes visualizar tu modelo exportado desde Blender (.glb).</p>
+            <h2>Explora nuestros juegos 3D</h2>
+            <p>Selecciona un juego para visualizar su modelo interactivo.</p>
         </section>
 
+        <!-- TARJETA GTA V -->
         <section class="contenedor contenedor-verde">
-            <div id="scene-container"></div>
+            <h3>Grand Theft Auto V</h3>
+
+            <div class="game-container">
+                <img src="imagenes/gta5.png" alt="GTA V">
+
+                <div class="game-info">
+                    <button onclick="location.href='gta5.html'">Ver modelo 3D</button>
+                    <p>Explora el icónico mundo de GTA V con su modelo 3D exportado desde Blender.</p>
+                </div>
+            </div>
         </section>
+
+        <!-- Puedes añadir más juegos igual que este -->
+
     </main>
 
     <footer class="contenedor contenedor-rojo">
         <p>© 2025 GameVerse 3D | Página de Juegos - Sebas</p>
     </footer>
 
-    <script>
-        // Escena
-        const scene = new THREE.Scene();
-
-        // Cámara
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 1, 3);
-
-        // Renderizador
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        document.getElementById("scene-container").appendChild(renderer.domElement);
-
-        // Controles
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-
-        // Luces
-        const light = new THREE.AmbientLight(0xffffff, 1.5);
-        scene.add(light);
-
-        const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-        dirLight.position.set(5, 10, 7);
-        scene.add(dirLight);
-
-        // Cargar modelo 3D
-        const loader = new THREE.GLTFLoader();
-        loader.load(
-            'models/juego.glb',  // ⚠️ CAMBIA ESTE NOMBRE por tu archivo
-            function (gltf) {
-                const model = gltf.scene;
-                model.scale.set(1.5, 1.5, 1.5); // cambia el tamaño si es necesario
-                scene.add(model);
-
-                // Animación
-                function animate() {
-                    requestAnimationFrame(animate);
-                    controls.update();
-                    renderer.render(scene, camera);
-                }
-                animate();
-            },
-            undefined,
-            function (error) {
-                console.error("Error cargando el modelo 3D:", error);
-            }
-        );
-
-        // Ajustar a ventana
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
-        });
-    </script>
 </body>
 </html>

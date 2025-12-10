@@ -2,82 +2,87 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consolas - GameVerse 3D</title>
-
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/examples/js/loaders/GLTFLoader.js"></script>
+    <style>
+        /* Estilos para la tarjeta de consola */
+        .console-container {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 12px;
+        }
+        .console-container img {
+            width: 200px;
+            border-radius: 12px;
+            margin-right: 20px;
+        }
+        .console-info {
+            flex: 1;
+        }
+        .console-info button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .console-info button:hover {
+            background-color: #e55b00;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>🎮 GameVerse 3D</h1>
-        <p class="hook">Descubre las consolas más potentes en un entorno 3D único.</p>
-        <nav>
-    <ul>
-        <li><a href="index.html" class="active">Inicio</a></li>
-        <li><a href="sebas.html">Consolas</a></li>
-        <li><a href="juegos.html">Juegos</a></li>
-    </ul>
-</nav>
 
-    </header>
+<header>
+    <h1>🎮 GameVerse 3D</h1>
+    <p class="hook">Descubre las consolas más potentes en un entorno 3D único.</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sebas.html" class="active">Consolas</a></li>
+            <li><a href="juegos.html">Juegos</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <section id="descripcion" class="contenedor contenedor-amarillo">
-            <h2>Explora nuestras consolas</h2>
-            <p>
-                Desde la legendaria PlayStation hasta la potente Xbox, observa cada detalle 
-                con nuestros modelos 3D interactivos. ¡Gira, mira y elige tu próxima consola!
-            </p>
-        </section>
+<main>
+    <section class="contenedor contenedor-amarillo">
+        <h2>Explora nuestras consolas</h2>
+        <p>Haz clic en el nombre de la consola para ver su modelo 3D.</p>
+    </section>
 
-        <section id="modelo3d" class="contenedor contenedor-verde">
-            <h3>Vista 3D de consola</h3>
-            <div id="scene-container"></div>
-        </section>
-    </main>
+    <section class="contenedor contenedor-verde">
+        <h3>PlayStation 4</h3>
+        <div class="console-container">
+            <img src="imagenes/play4.png" alt="PlayStation 4">
+            <div class="console-info">
+                <button onclick="location.href='play4.html'">Ver modelo 3D</button>
+                <p>La PlayStation 4 combina potencia y entretenimiento, con una gran biblioteca de juegos y un diseño elegante.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contenedor contenedor-verde">
+    <h3>Xbox Series X</h3>
+    <div class="console-container">
+        <img src="imagenes/xbox.png" alt="Xbox Series X">
+        <div class="console-info">
+            <button onclick="location.href='xbox.html'">Ver modelo 3D</button>
+            <p>La Xbox Series X ofrece potencia extrema, tiempos de carga ultrarrápidos y una experiencia de nueva generación.</p>
+        </div>
+    </div>
+</section>
 
-    <footer class="contenedor contenedor-rojo">
-        <p>© 2025 GameVerse 3D | Página de Sebas</p>
-    </footer>
+</main>
 
-    <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
-    document.getElementById("scene-container").appendChild(renderer.domElement);
-
-    const light = new THREE.AmbientLight(0xffffff, 2);
-    scene.add(light);
-
-    // Cargador GLTF
-    const loader = new THREE.GLTFLoader();
-    loader.load(
-        'modelos3D/modelosPagina/play4.glb', // ruta a tu modelo
-        function(gltf) {
-            const model = gltf.scene;
-            model.scale.set(1, 1, 1); // ajustar tamaño si es necesario
-            scene.add(model);
-        },
-        undefined,
-        function(error) {
-            console.error(error);
-        }
-    );
-
-    camera.position.z = 5;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        // Si quieres que gire el modelo, puedes añadir algo como:
-        // model.rotation.y += 0.01;
-        renderer.render(scene, camera);
-    }
-    animate();
-</script>
+<footer class="contenedor contenedor-rojo">
+    <p>© 2025 GameVerse 3D | Página de Sebas</p>
+</footer>
 
 </body>
 </html>
-    

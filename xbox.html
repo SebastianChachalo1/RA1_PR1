@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modelo 3D Xbox</title>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+        "three/examples/jsm/loaders/GLTFLoader.js": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/loaders/GLTFLoader.js",
+        "three/examples/jsm/controls/OrbitControls.js": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #threeD-container {
+            width: 100vw;
+            height: 100vh;
+        }
+        .btn-volver {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: green;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            z-index: 10;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<a class="btn-volver" href="sebas.html">← Volver</a>
+<div id="threeD-container"></div>
+
+<script type="module" src="./main-xbox.js"></script>
+
+</body>
+</html>
