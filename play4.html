@@ -15,25 +15,73 @@
     </script>
 
     <style>
-        body { margin: 0; overflow: hidden; }
-        #threeD-container { width: 100vw; height: 100vh; }
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #threeD-container {
+            width: 100vw;
+            height: 100vh;
+        }
+
         .btn-volver {
             position: absolute;
-            top: 20px; left: 20px;
+            top: 20px;
+            left: 20px;
             padding: 10px 20px;
-            background: orange; color: white;
+            background: orange;
+            color: white;
             border-radius: 8px;
             text-decoration: none;
-            z-index: 10;
+            z-index: 20;
+            font-size: 18px;
+        }
+
+        /* 📌 Caja de información arriba del modelo */
+        .info-consola {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            border-radius: 12px;
+            font-family: Arial, sans-serif;
+            text-align: right;
+            z-index: 20;
+        }
+
+        .info-consola h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #00ffcc;
+        }
+
+        .info-consola p {
+            margin: 5px 0 0 0;
+            font-size: 18px;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Botón volver -->
     <a class="btn-volver" href="sebas.html">← Volver</a>
+
+    <!-- 📌 Caja con nombre y precio -->
+    <div class="info-consola">
+        <h2>PlayStation 4</h2>
+        <p>Precio: <strong>499€</strong></p>
+    </div>
+
+    <!-- Contenedor del modelo -->
     <div id="threeD-container"></div>
 
-    <script type="module" src="./main.js"></script>
+    <!-- Three.js + código -->
+    <script type="module" src="main.js"></script>
+
 </body>
 </html>
 
